@@ -1,0 +1,71 @@
+<body>
+  <div class="text-left"><% if (service_supplier_logo_url) { %><img src="<%= service_supplier_logo_url %>" class="pull-left"/><% } %></div>
+  <address class="text-right">
+      <h3>MJ Serwis laptopów i konsol</h3>
+      <p class="address">Ul. Szamarzewskiego 56<br>60-569 Poznań<br>tel.: 794-24-62-62<br>www.mj-komputery.pl<br>www.naprawa-konsol.pl</p>
+  </address>
+  
+  <h1 class="text-center">Potwierdzenie przyjęcia sprzętu<br>numer: <strong><span class="rma"><%=order_rma %></span></strong></h1>
+  <div class="box-unit">
+      <u><strong style="font-size: 25px;">Informacje o naprawie</strong></u><br>
+      <strong>Zlecający: </strong><span class="variable"><%= customer_name %></span><br>
+      <strong>Dane kontaktowe: </strong><span class="variable"><%= customer_phone %><%= customer_email %></span><br>
+      <strong>Data przyjęcia: </strong><span class="variable"><% if (order_created_time) { %><%= order_created_time %><% } else { %><%= order_created_time %><% } %></span><br>
+      <strong>Rodzaj: </strong><span class="variable"><%= order_object_type %> <%= order_object_vendor %> <%= order_object_model %></span><br>
+      <% if (order_estimated_price > 0) { %>
+      <strong>Szacunkowy, akceptowany przez klienta koszt naprawy: </strong><u><span class="variable"><span class="info_customer"><%= order_estimated_price_f %> PLN <% } %></span></span></u> <br><br>
+      <u><strong style="font-size: 18px;">Opis usterki:</strong></u><br>
+      <span class="variable_issue"><%= order_issue %></span>
+      <h1 class="text-center">PŁATNOŚĆ TYLKO GOTÓWKĄ</h1>
+      <hr>
+      <strong style="font-size: 30px;">Zlecenie: <%= order_rma %></strong><br>
+      <strong>Zlecający: </strong><%= customer_name %><br>
+      <strong>Dane kontaktowe: </strong><span class="info_customer"><%= customer_phone %><%= customer_email %></span><br>
+      <strong>Data przyjęcia: </strong><% if (order_created_time) { %><%= order_created_time %><% } else { %><%= order_created_time %><% } %><br>
+      <strong>Rodzaj: </strong><%= order_object_type %> <%= order_object_vendor %> <%= order_object_model %><br>
+      <% if (order_estimated_price > 0) { %>
+      <strong>Koszt naprawy: </strong><span class="info_customer"><%= order_estimated_price_f %> PLN <% } %></span><br><br>
+      <u><strong style="font-size: 18px;">Opis usterki:</strong></u><br>
+      <span class="info"><%= order_issue %></span>
+      <u><strong style="font-size: 18px;">Dodatkowy opis:</strong></u><br>
+      <span class="info"><%= order_remarks %></span><br>
+  </div>
+</body>
+<style>
+    div,
+    address,
+    h1,
+    h2,
+    h3,
+    strong,
+    u {
+        color: black;
+    }
+
+    strong {
+        font-size: 15px;
+    }
+
+    .variable {
+        font-size: 19px;
+    }
+    .variable_issue {
+        font-size: 17px;
+    }
+
+    .rma {
+        font-size: 30px;
+    }
+
+    .address {
+        font-size: 18px;
+    }
+
+    .info {
+        font-size: 17px;
+    }
+    .info_customer {
+        font-size: 23px;
+        font-weight: bold;
+    }
+</style>
